@@ -5,11 +5,15 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
+import DevTools from './DevTools';
 import reducer from './reducer';
 import { addComment } from './actions';
 
-const store = createStore(reducer);
+const store = createStore(
+  reducer,
+  DevTools.instrument()
+);
 
 ReactDOM.render(
   <Provider store={store}>
@@ -18,7 +22,6 @@ ReactDOM.render(
   document.getElementById('root'));
 
   store.dispatch(addComment('pierwszy komentarz'));
-  console.log(addComment('pierwszy'));
   store.dispatch(addComment('drugi komentarz'));
 
 // If you want your app to work offline and load faster, you can change
