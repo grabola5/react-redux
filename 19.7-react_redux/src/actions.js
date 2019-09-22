@@ -10,7 +10,7 @@ function addComment(text) {
   return {
     type: ADD_COMMENT,
     text,
-    id: uuid.v4
+    id: uuid.v4()
   }
 };
 
@@ -43,8 +43,4 @@ function thumbDownComment(id) {
   }
 };
 
-export addComment;
-export removeComment;
-export editComment;
-export thumbUpComment;
-export thumbDownComment;
+export {addComment, removeComment, editComment, thumbUpComment, thumbDownComment};
